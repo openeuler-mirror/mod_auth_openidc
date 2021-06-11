@@ -7,12 +7,14 @@
 
 Name:           mod_auth_openidc
 Version:        2.4.0.3
-Release:        3
+Release:        4
 Summary:        OpenID Connect Relying Party module for Apache 2.x HTTP Server
 License:        ASL 2.0
 URL:            https://github.com/zmartzone/mod_auth_openidc
 Source0:        https://github.com/zmartzone/mod_auth_openidc/archive/v%{version}.tar.gz
 Patch0000:      CVE-2019-20479.patch
+Patch0001:      CVE-2021-20718-pre1.patch
+Patch0002:      CVE-2021-20718.patch
 
 BuildRequires:  gcc httpd-devel openssl-devel curl-devel jansson-devel
 BuildRequires:  pcre-devel autoconf automake cjose-devel jq-devel
@@ -59,6 +61,9 @@ install -m 700 -d $RPM_BUILD_ROOT%{httpd_pkg_cache_dir}/{metadata,cache}
 %dir %attr(0700, apache, apache) %{httpd_pkg_cache_dir}/{metadata,cache}
 
 %changelog
+* Thu Jun 10 2021 wangyue <wangyue92@huawei.com> 2.4.0.3-4
+- Fix CVE-2021-20718
+
 * Fri Feb 19 2021 wangxiao <wangxiao65@huawei.com> 2.4.0.3-3
 - Fix CVE-2019-20479
 
